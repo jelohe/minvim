@@ -1,18 +1,20 @@
 # MINVIM
 
-## Minimal nvim distro
-
 ### Dependencies
 
-Install `fzf` `curl` `nvim` and `rg`.
+##### Ensure you have `fzf` `curl` `nvim` and `rg`.
+* Mac 
 `brew install fzf curl nvim rg`
-or
+
+* Linux 
 `apt-get install fzf curl nvim rg`
-or the equivalent.
 
 ### Install
-* Create & open config file `md -p ~/.config/nvim && nvim ~/.config/nvim/init.lua`
-* Copy content of `init.lua` file from this repo.
-* Press `P` `Z` `Z` on nvim.
+* Run
+  ```
+  mkdir -p ~/.config/nvim && \
+    curl -o ~/.config/nvim/init.lua \
+      https://raw.githubusercontent.com/jelohe/minvim/refs/heads/main/init.lua
+  ```
 
 ## 🚀 Go code
