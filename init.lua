@@ -1,24 +1,21 @@
--- Pluging manager
-local install_path = vim.fn.stdpath('data') .. '/site/autoload/plug.vim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    vim.fn.system({
-        'curl', '-fLo', install_path, '--create-dirs',
-        'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    })
-    vim.cmd([[autocmd VimEnter * PlugInstall --sync | source $MYVIMRC]])
-end
-
 -- Plugins
-vim.cmd [[
-call plug#begin('~/.vim/plugged')
-Plug 'chriskempson/base16-vim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
-Plug 'stevearc/oil.nvim'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-call plug#end() ]]
+vim.api.nvim_create_autocmd("VimEnter", {
+  pattern = "*",
+  callback = function()
+    vim.cmd('PlugInstall --sync')
+    vim.cmd('source $MYVIMRC')
+  end
+})
+local Plug = vim.fn['plug#']
+vim.call('plug#begin')
+Plug('chriskempson/base16-vim')
+Plug('nvim-lua/plenary.nvim')
+Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.8' })
+Plug('tpope/vim-surround')
+Plug('tpope/vim-repeat')
+Plug('tpope/vim-commentary')
+Plug('stevearc/oil.nvim')
+vim.call('plug#end')
 
 -- Plugin config
 require('oil').setup()
@@ -27,7 +24,7 @@ local actions = require('telescope.actions')
 require"telescope".setup({defaults={mappings={i={["<esc>"]=actions.close}}}})
 
 -- Colors
-vim.cmd [[colorscheme base16-grayscale-dark]]
+vim.cmd('silent! colorscheme base16-grayscale-dark')
 
 -- Mappings
 vim.g.mapleader = ' '

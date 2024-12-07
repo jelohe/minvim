@@ -10,11 +10,12 @@
 `apt-get install fzf curl nvim rg`
 
 ### Install
-* Run
+* Run this magic command
   ```
-  mkdir -p ~/.config/nvim && \
-    curl -o ~/.config/nvim/init.lua \
-      https://raw.githubusercontent.com/jelohe/minvim/refs/heads/main/init.lua
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
+  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' \
+  && curl -o ~/.config/nvim/init.lua --create-dirs \
+  https://raw.githubusercontent.com/jelohe/minvim/refs/heads/main/init.lua
   ```
 
 ## 🚀 Go code
