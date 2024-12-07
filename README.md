@@ -11,8 +11,8 @@
 
 ### Install
 * Run this
-  ```
+```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jelohe/minvim/refs/heads/main/install.sh)"
-  ```
+```
 
-## `nvim` 🚀 Go code
+## 🚀 Go code
