@@ -12,7 +12,7 @@
 ### Install
 * Run this
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jelohe/minvim/refs/heads/main/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/jelohe/minvim/refs/heads/main/install.sh)"
 ```
 
 ## 🚀 Go code
