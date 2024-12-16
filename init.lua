@@ -52,6 +52,17 @@ vim.cmd('colorscheme tokyobones')
 --
 -- Mappings
 --
+local function tab_or_complete()
+  local col = vim.fn.col(".") - 1
+  local line = vim.fn.getline(".")
+
+  if col > 0 and line:sub(col, col):match("%w") then
+    return vim.api.nvim_replace_termcodes("<C-N>", true, true, true)
+  else
+    return vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
+  end
+end
+vim.keymap.set("i", "<tab>", function() return tab_or_complete() end, { expr = true })
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<enter>', ':')
 -- navigation
