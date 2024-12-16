@@ -1,0 +1,150 @@
+<!DOCTYPE htmlpaddinghtml lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>minvim</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Fira Sans", sans-serif;
+        background-color: #1A1B26;
+        margin: 0;
+        color: #C0CAF5;
+        text-align: left;
+        padding: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @media (max-width: 768px) {
+        body {
+          justify-content: start;
+        }
+      }
+      a {
+        text-decoration: none;
+        opacity: 0.8;
+        color: #C0CAF5;
+        margin-right: 1em;
+      }
+      a:hover {
+        opacity: 0.9;
+      }
+      a:active {
+        opacity: 1;
+      }
+      pre {
+        padding: 1em;
+        border-radius: .3em;
+        background-color: #36384D;
+        overflow-x: auto;
+        margin-right: 1em;
+        flex-shrink: 1;
+        max-width: 30em;
+        min-width: 10em;
+      }
+      h1 { 
+        letter-spacing: .05em;
+        font-size: 6em; 
+        font-weight: 400;
+        min-width: 0;
+        flex-shrink: 1;
+        text-wrap: nowrap;
+        margin-bottom: 1em;
+      }
+      h2 {
+        font-weight: 200;
+        font-style: normal;
+        margin-bottom: 0.5em;
+        margin-top: 3em;
+      }
+      section {
+        margin: 2em 0;
+      }
+      main {
+        max-width: 1024px;
+        margin: auto;
+      }
+      span {
+        color: #90AFFA;
+      }
+      span.green {
+        color: #74DBCB;
+      }
+      .fa-github {
+        color: #E1B068;
+        opacity: 0.7;
+        cursor: pointer;
+      }
+      .fa-clone {
+        color: #E1B068;
+        opacity: 0.8;
+        cursor: pointer;
+      }
+      .fa-clone:hover {
+        opacity: 1;
+      }
+      .fa-clone:active {
+        color: #74DBCB;
+      }
+      div {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        flex-direction: row;
+        justify-content: start;
+      }
+    </style>
+    <script>
+      function toClipboard(text) {
+        navigator.clipboard.writeText(text);
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <main>
+        <h1>
+          <a href="https://github.com/jelohe/minvim">
+            <span>MIN</span>VIM
+            <i class="fa fa-github"></i>
+          </a>
+        </h1>
+        <section>
+          <h2>Prerequisites</h2>
+          <div>
+            <pre><code><span>brew install</span> fzf nvim ripgrep curl</code></pre>
+            <i
+              class="fa fa-clone"
+              onClick="toClipboard('brew install fzf nvim ripgrep curl')"
+            ></i>
+          </div>
+        </section>
+        <section>
+          <h2>Install</h2>
+          <div>
+            <pre><code><span>/bin/bash -c "</span>$(<span>curl -fsSL</span> https://raw.githubusercontent.com/jelohe/minvim/refs/heads/main/install.sh)<span>"</span></code></pre>
+              <i
+                class="fa fa-clone"
+                onClick="toClipboard('/bin/bash -c \'$(curl -fsSL https://raw.githubusercontent.com/jelohe/minvim/refs/heads/main/install.sh)\'')"
+              ></i>
+          </div>
+        </section>
+        <section>
+          <h2>Code</h2>
+          <div>
+            <pre><code><span class="green">nvim</span> ~/myproject</code></pre>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
