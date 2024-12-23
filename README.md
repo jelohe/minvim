@@ -1,4 +1,4 @@
-# MINVIM
+# [MINVIM](https://minvim.pages.dev)
 
 ### Dependencies
 
