@@ -3,7 +3,10 @@
 --
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
+Plug('elixir-editors/vim-elixir')
+Plug('christoomey/vim-tmux-navigator')
 Plug('zenbones-theme/zenbones.nvim')
+Plug('jelohe/vim-tabcomplete')
 Plug('nvim-lualine/lualine.nvim')
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim', { ['tag'] = '0.1.8' })
@@ -48,21 +51,15 @@ require'lualine'.setup({
 vim.opt.background='dark'
 vim.g.bones_compat=1
 vim.cmd('colorscheme tokyobones')
+-- transparent background
+vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
 
 --
 -- Mappings
 --
-local function tab_or_complete()
-  local col = vim.fn.col(".") - 1
-  local line = vim.fn.getline(".")
-
-  if col > 0 and line:sub(col, col):match("%w") then
-    return vim.api.nvim_replace_termcodes("<C-N>", true, true, true)
-  else
-    return vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
-  end
-end
-vim.keymap.set("i", "<tab>", function() return tab_or_complete() end, { expr = true })
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<enter>', ':')
 -- navigation
@@ -85,7 +82,7 @@ vim.keymap.set('n', '<leader>l', function() vim.wo.number = not vim.wo.number en
 -- plugin maps
 vim.keymap.set('n', '<leader> ', telescope.buffers, { desc = 'Buffers' })
 vim.keymap.set('n', '<leader>f', telescope.find_files, { desc = 'Files' })
-vim.keymap.set('n', '<leader>r', telescope.live_grep, { desc = 'Search' })
+vim.keymap.set('n', '<leader>g', telescope.live_grep, { desc = 'Search' })
 vim.keymap.set('n', '<leader>h', telescope.help_tags, { desc = 'Help' })
 vim.keymap.set('n', '<leader>*', telescope.grep_string, { desc = 'Search this' })
 vim.keymap.set('n', '<leader>?', telescope.help_tags, { desc = 'Help' })
@@ -94,9 +91,11 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Manage files' })
 --
 -- Defaults
 --
-vim.o.clipboard = vim.fn.has('unnamedplus') == 1 and 'unnamedplus' or ''
+vim.o.clipboard = 'unnamedplus'
 vim.o.hlsearch = false
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.expandtab = true
+vim.o.laststatus = 2
+vim.wo.number = false
